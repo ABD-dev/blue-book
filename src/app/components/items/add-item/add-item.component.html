@@ -1,0 +1,37 @@
+<div class="row vertical-margin">
+  <div class="col-8">
+    <form [formGroup]="addItemForm" (ngSubmit)="doSubmit(addItemForm.value)" autocomplete="off" novalidate>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Barcode: </label>
+        <div class="col-10">
+          <input class="form-control" type="number" id="barcode" placeholder="Scan barcode" formControlName="barcode">
+        </div>
+      </div>
+      <div *ngIf="addItemForm.value.barcode">
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Item Name</label>
+          <div class="col-10">
+            <input class="form-control" type="text" placeholder="Short Name" formControlName="name">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Amount</label>
+          <div class="col-10">
+            <input class="form-control" type="number" formControlName="amount">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Description</label>
+          <div class="col-10">
+            <textarea class="form-control" rows="3" formControlName="description"></textarea>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!addItemForm.valid">Add</button>
+    </form>
+  </div>
+  <div class="col-4">
+    <h5 class="text-center">Recently Added Items</h5>
+    <app-preview-items [items]="items"></app-preview-items>
+  </div>
+</div>
