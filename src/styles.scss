@@ -1,4 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+/* Bootstrap Theme */
+@import "assets/sass/light-bootstrap-dashboard.scss";
+/* PE fonts (icons) */
+@import "assets/sass/pe-icon-7-stroke.css";
+
+body {
+    background-color: #f1f4f7;
+}
+
 .vertical-margin {
     margin-top: 10px;
     margin-bottom: 10px;

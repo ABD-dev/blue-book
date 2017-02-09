@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
+  styles: [`
+    .container { padding-top: 50px; }
+  `],
 })
 export class LoginComponent {
   credentials: Credentials;

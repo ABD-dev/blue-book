@@ -15,6 +15,8 @@ import { AddItemComponent } from './components/items/add-item/add-item.component
 import { PreviewItemsComponent } from './components/items/add-item/preview-items.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MainComponent } from './components/main/main.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     PreviewItemsComponent,
     LoginComponent,
     DashboardComponent,
+    SidebarComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
