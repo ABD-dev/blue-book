@@ -1,17 +1,14 @@
-<div class="vertical-margin" *ngIf="!items.length">
-  <div class="card">
-    <div class="card-block">
-      <p class="card-text">No item added yet.</p>
-    </div>
+<div class="card" *ngFor="let item of items; let index = index;">
+  <div class="header">
+    <h5 class="title">{{item.name}}</h5>
   </div>
-</div>
-<div class="vertical-margin" *ngFor="let item of items; let index = index;">
-  <div class="card">
-    <div class="card-block">
-      <h4 class="card-title">{{item.name}} <small>({{item.amount}} pcs)</small></h4>
-      <h6 class="card-subtitle mb-2 text-muted">{{item.barcode}}</h6>
-      <p class="card-text">{{item.description}}</p>
-      <button class="btn btn-outline-danger btn-sm" (click)="removeItem(index)">Remove</button>
+  <div class="content">
+    <p>Description: {{item.description || 'No description'}}</p>
+    <p>Amount: {{item.amount_in}}</p>
+    <p>Value in/out: {{item.value_in}}/{{item.value_out}}</p>
+    <hr>
+    <div class="footer">
+        <button class="btn btn-danger btn-xs" (click)="removeItem(index)">Remove</button>
     </div>
   </div>
 </div>
