@@ -23,6 +23,7 @@ import { MainComponent } from './components/main/main.component';
 import { ItemListComponent } from './components/items/item-list/item-list.component';
 import { ItemsComponent } from './components/items/items.component';
 import { ItemEditComponent } from './components/items/item-edit/item-edit.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ItemEditComponent } from './components/items/item-edit/item-edit.compon
     ItemListComponent,
     ItemsComponent,
     ItemEditComponent,
+    ConfirmModalComponent,
   ],
   imports: [
     BrowserModule,

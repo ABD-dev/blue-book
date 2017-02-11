@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthHttp, tokenNotExpired } from 'angular2-jwt';
 import { AppSettings } from '../../../app.config';
+import { ConfirmModalComponent } from '../../confirm-modal/confirm-modal.component' ;
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -10,6 +11,7 @@ import 'rxjs/add/operator/map';
 })
 export class ItemListComponent implements OnInit {
   items: Array<any>;
+  @ViewChild(ConfirmModalComponent) modal;
 
   constructor(private authHttp: AuthHttp, private appSettings: AppSettings) { }
 
@@ -22,12 +24,16 @@ export class ItemListComponent implements OnInit {
       );
   }
 
-  removeItem(index) {
-    // Todo: confirm delete
-    let itemId = this.items[index].id;
+  openModal(itemIndex) {
+    this.modal.confirmValue = itemIndex;
+    this.modal.open();
+  }
+
+  removeItem(event) {
+    let itemId = this.items[event].id;
     this.authHttp.delete(`${this.appSettings.API_URL}/items/${itemId}`)
       .subscribe(
-        data => this.items.splice(index, 1),
+        data => this.items.splice(event, 1),
         error => console.log(error)
       );
   }

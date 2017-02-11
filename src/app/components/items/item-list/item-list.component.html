@@ -29,7 +29,7 @@
               <th>{{item.expiry_date || '-'}}</th>
               <th>
                 <a href="javascript:void(0)" [routerLink]="['edit', item.id]" class="btn btn-info btn-xs">Edit</a>
-                <a href="javascript:void(0)" class="btn btn-danger btn-xs" (click)="removeItem(index)">Delete</a>
+                <a href="javascript:void(0)" class="btn btn-danger btn-xs" (click)="openModal(index)">Delete</a>
               </th>
             </tr>
           </tbody>
@@ -38,3 +38,4 @@
     </div>
   </div>
 </div>
+<app-confirm-modal (confirmed)="removeItem($event)"></app-confirm-modal>

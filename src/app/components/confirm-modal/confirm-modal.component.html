@@ -1,0 +1,14 @@
+<div class="modal fade" bsModal #modal="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm text-center">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Are you sure ?</h4>
+      </div>
+      <div class="modal-body">
+        <button class="btn btn-danger" (click)="modal.hide()">No</button>
+        <button class="btn btn-success" (click)="confirm()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
