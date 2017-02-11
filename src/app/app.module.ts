@@ -1,13 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { AuthHttp, AuthConfig, AUTH_PROVIDERS, provideAuth } from 'angular2-jwt';
+import { HttpModule, Http, RequestOptions } from '@angular/http';
+import { AuthHttp } from 'angular2-jwt';
 
 import { AppSettings } from './app.config';
-import { AuthService } from './services/auth.service';
+import { AuthService, authHttpServiceFactory } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { GuestGuard } from './services/guest-guard.service';
+
+import { ModalModule } from 'ng2-bootstrap';
 
 import { AppComponent } from './app.component';
 import { Routing } from './app.routing';
@@ -42,18 +44,16 @@ import { ItemEditComponent } from './components/items/item-edit/item-edit.compon
     ReactiveFormsModule,
     HttpModule,
     Routing,
+    ModalModule.forRoot(),
   ],
   providers: [
     AppSettings,
     AuthService,
-    AuthHttp,
-    provideAuth({
-      headerName: 'Authorization',
-      tokenName: 'token',
-      tokenGetter: (() => localStorage.getItem('token')),
-      globalHeaders: [{ 'Content-Type': 'application/json' }],
-      noJwtError: true
-    }),
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [Http, RequestOptions]
+    },
     AuthGuard,
     GuestGuard,
   ],

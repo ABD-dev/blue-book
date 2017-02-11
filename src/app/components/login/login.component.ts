@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   credentials: Credentials;
   loginError: String;
+  isLoading = false;
   public loginForm = this.fb.group({
     email: ['', Validators.required],
     password: ['', Validators.required],
@@ -22,6 +23,8 @@ export class LoginComponent {
   constructor(private authService: AuthService, private fb:FormBuilder, private router: Router) { }
 
   onSubmit() {
+    this.isLoading = true;
+    this.loginError = null;
     this.loginForm.valid && 
     this.authService.login(this.loginForm.value)
       .subscribe(
@@ -34,6 +37,7 @@ export class LoginComponent {
   }
 
   private handleRejection(error) {
+    this.isLoading = false;
     if(error.status = 401){;
       this.loginError = JSON.parse(error._body);
     }
