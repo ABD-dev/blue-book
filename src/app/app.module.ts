@@ -10,6 +10,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { GuestGuard } from './services/guest-guard.service';
 
 import { ModalModule } from 'ng2-bootstrap';
+import { SelectModule } from 'ng2-select';
 
 import { AppComponent } from './app.component';
 import { Routing } from './app.routing';
@@ -24,6 +25,9 @@ import { ItemListComponent } from './components/items/item-list/item-list.compon
 import { ItemsComponent } from './components/items/items.component';
 import { ItemEditComponent } from './components/items/item-edit/item-edit.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { BasketComponent } from './components/checkout/basket.component';
+import { TotalComponent } from './components/checkout/total.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,9 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
     ItemsComponent,
     ItemEditComponent,
     ConfirmModalComponent,
+    CheckoutComponent,
+    BasketComponent,
+    TotalComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +54,7 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
     HttpModule,
     Routing,
     ModalModule.forRoot(),
+    SelectModule,
   ],
   providers: [
     AppSettings,

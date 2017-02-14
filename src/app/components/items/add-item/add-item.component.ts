@@ -10,6 +10,7 @@ import { AppSettings } from '../../../app.config';
 export class AddItemComponent {
   public addItemForm = this.fb.group({
     'name': ['', Validators.required],
+    'barcode': [''],
     'description': [''],
     'amount_in': ['', Validators.required],
     'value_in': [''],

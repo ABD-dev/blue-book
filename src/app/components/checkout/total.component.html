@@ -1,0 +1,25 @@
+<div class="card" *ngIf="true">
+  <div class="header">
+    <h5>Total:</h5>
+  </div>
+  <hr>
+  <div class="content" *ngIf="items.length">
+    <div class="row" *ngFor="let item of items">
+      <div class="col-sm-6">
+        <p>{{item.name}}</p>
+      </div>
+      <div class="col-sm-3">
+        <p>x{{item.pcs || 1}}</p>
+      </div>
+      <div class="col-sm-3">
+        <p>{{(item.pcs || 1) * item.value_out}}</p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-3 col-sm-offset-9">
+        <p>{{sum}}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-8">
+    <div class="card">
+      <div class="content">
+        <div class="row">
+          <div class="col-sm-4 text-center">
+            <div class="btn-group" role="group" (click)="toggleBarcodeName()">
+              <button type="button" class="btn btn-default" [ngClass]="{ 'btn-fill': barcodeSelected }">Barcode</button>
+              <button type="button" class="btn btn-default" [ngClass]="{ 'btn-fill': nameSelected }">Name</button>
+            </div>
+          </div>
+          <div class="col-sm-8">
+          
+            <form class="form-inline" *ngIf="barcodeSelected" [formGroup]="scanForm" (ngSubmit)="scanFormSubmit()" autocomplete="off" novalidate>
+              <div class="form-group">
+                <label class="control-label">Barcode: </label>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Scan barcode" formControlName="barcode">
+              </div>
+            </form>
+
+            <div *ngIf="nameSelected">
+                <ng-select [allowClear]="true"
+                           [items]="itemsNameList"
+                           (selected)="selected($event)"
+                           placeholder="Select Item Name">
+              </ng-select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-basket [items]="itemList" (add)="addPcsToItem($event)" (sub)="subPcsToItem($event)" (deleteItem)="removeItem($event)"></app-basket>
+  </div>
+  <div class="col-sm-4">
+    <app-total [items]="itemList"></app-total>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="header">
+    <i class="pe-7s-cart"></i> Cart
+  </div>
+  <hr>
+  <div class="content">
+    <p class="text-muted" *ngIf="!items.length">No items in cart. Scan barcode or search by name.</p>
+    <table class="table table-responsive" *ngIf="items.length">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Remaining</th>
+          <th>Value</th>
+          <th>Amount</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items; let i = index">
+          <td>{{i+1}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.amount_in - item.amount_out - ( item.pcs || 1)}}</td>
+          <td>{{item.value_out}}</td>
+          <td>{{item.pcs || 1}}</td>
+          <td class="text-center">
+            <button type="button" class="btn btn-danger" (click)="removeItem(i)">x</button>
+            <button type="button" class="btn btn-warning" (click)="subOne(i)">-</button>
+            <button type="button" class="btn btn-success" (click)="addOne(i)">+</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
